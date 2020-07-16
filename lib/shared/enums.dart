@@ -1,0 +1,68 @@
+enum OrderStatusType {
+  OPEN,
+  CONFIRMED,
+  ON_DELIVERY,
+  READY_FOR_PICKUP,
+  CANCELED_BY_USER,
+  CANCELED_BY_STORE,
+  EXPIRED,
+  DELIVERED,
+}
+
+enum SwitchTheme {
+  NIGHT_IDLE,
+  DAY_IDLE,
+  SWITCH_NIGHT,
+  SWITCH_DAY,
+}
+
+enum Gender {
+  MALE,
+  FEMALE,
+  OTHER,
+}
+
+enum DiscountType {
+  PERCENTAGE,
+  VALUE,
+}
+
+enum ButtonType {
+  DEFAULT,
+  DEFAULT_ALTERNATIVE,
+  CONFIRMATION,
+  CANCEL,
+  CALL_TO_ACTION,
+  CALL_TO_ACTION_ALTERNATIVE,
+  DISABLED
+}
+
+enum ButtonFillType {
+  FILLED,
+  BORDER,
+  EMPTY,
+}
+
+enum DeliveryType {
+  DELIVERY,
+  PICKUP,
+}
+
+enum PaymentType {
+  CARD,
+  CASH,
+}
+
+enum NotificationType {
+  CONFIRMED_ORDER,
+  DELIVERED,
+  EXPIRED,
+  GENERAL,
+  IN_DELIVERY,
+  NEW_ORDER,
+  ORDER_CANCELED_BY_STORE,
+  ORDER_CANCELED_BY_USER,
+  RATING,
+  RATING_REQUEST,
+  READY_FOR_PICKUP,
+}

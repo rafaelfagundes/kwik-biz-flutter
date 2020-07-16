@@ -37,10 +37,6 @@ class DrawerWidget extends StatelessWidget {
                       icon: SFSymbols.gear,
                       label: 'Ajustes',
                     ),
-                    DrawerItem(
-                      icon: SFSymbols.question_circle,
-                      label: 'Ajuda',
-                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
@@ -61,6 +57,10 @@ class DrawerWidget extends StatelessWidget {
                                 activeColor: Theme.of(context).accentColor,
                               ),
                       ],
+                    ),
+                    DrawerItem(
+                      icon: SFSymbols.question_circle,
+                      label: 'Ajuda',
                     ),
                   ],
                 ),
