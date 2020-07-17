@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_sfsymbols/flutter_sfsymbols.dart';
+import 'package:kwik_biz_flutter/widgets/custom_sized_box.dart';
 
 import '../custom_secondary_text.dart';
 
@@ -69,9 +70,10 @@ class DefaultScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.all(padding ? 16.0 : 0),
-          child: Column(
-            children: <Widget>[...children],
-          ),
+          child: Column(children: <Widget>[
+            ...children,
+            CustomSizedBox(heightSize: 3),
+          ]),
         ),
       ),
     );

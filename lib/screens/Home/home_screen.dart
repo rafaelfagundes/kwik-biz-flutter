@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_sfsymbols/flutter_sfsymbols.dart';
 import 'package:intl/intl.dart';
 import 'package:kwik_biz_flutter/shared/enums.dart';
+import 'package:kwik_biz_flutter/utils/image_utils.dart';
 import 'package:kwik_biz_flutter/utils/theme_utils.dart';
 import 'package:kwik_biz_flutter/widgets/custom_button_widget.dart';
 import 'package:kwik_biz_flutter/widgets/custom_card.dart';
 import 'package:kwik_biz_flutter/widgets/custom_secondary_text.dart';
 import 'package:kwik_biz_flutter/widgets/custom_sized_box.dart';
 import 'package:kwik_biz_flutter/widgets/custom_text.dart';
+import 'package:kwik_biz_flutter/widgets/icon_with_background.dart';
 import 'package:kwik_biz_flutter/widgets/label_and_switch_widget.dart';
 import 'package:kwik_biz_flutter/widgets/rounded_store_logo_widget.dart';
 
@@ -87,11 +89,11 @@ class _HomeScreenState extends State<HomeScreen>
               child: DualValueCard(
                 value1value: '3.4',
                 value1label: '5 avaliações',
-                value1icon: SFSymbols.star_fill,
-                value1color: Colors.yellow[700],
+                value1icon: SFSymbols.star_circle_fill,
+                value1color: Colors.yellow[800],
                 value2value: '6',
                 value2label: 'Favoritos',
-                value2icon: SFSymbols.heart_fill,
+                value2icon: SFSymbols.heart_circle_fill,
                 value2color: Colors.red[900],
                 onPressed: null,
                 buttonText: 'Ver Avaliações',
@@ -137,8 +139,10 @@ class BusinessStatus extends StatelessWidget {
                         children: <Widget>[
                           RoundedStoreLogoWidget(
                             size: 46,
-                            url:
+                            url: ImageUtils.resizeCloudinaryImageFromUrl(
                                 'https://res.cloudinary.com/kardappio/image/upload/v1588298907/tyukddlp3acv7fhicrvj.png',
+                                64,
+                                context),
                           ),
                           CustomSizedBox(widthSize: 1.5),
                           Column(
@@ -269,14 +273,11 @@ class DualValueCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   if (value1icon != null)
-                    Container(
-                        child: Icon(value1icon),
-                        padding: EdgeInsets.all(8),
-                        margin: EdgeInsets.only(right: 10),
-                        decoration: BoxDecoration(
-                            color: value1color,
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(64)))),
+                    IconWithBackground(
+                      icon: value1icon,
+                      color: value1color,
+                      margin: 10,
+                    ),
                   Column(
                     crossAxisAlignment: value1icon == null
                         ? CrossAxisAlignment.center
@@ -307,14 +308,11 @@ class DualValueCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   if (value2icon != null)
-                    Container(
-                        child: Icon(value2icon),
-                        padding: EdgeInsets.all(8),
-                        margin: EdgeInsets.only(right: 10),
-                        decoration: BoxDecoration(
-                            color: value2color,
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(64)))),
+                    IconWithBackground(
+                      icon: value2icon,
+                      color: value2color,
+                      margin: 10,
+                    ),
                   Column(
                     crossAxisAlignment: value2icon == null
                         ? CrossAxisAlignment.center

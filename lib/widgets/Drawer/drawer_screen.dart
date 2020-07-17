@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_sfsymbols/flutter_sfsymbols.dart';
 import 'package:kwik_biz_flutter/utils/image_utils.dart';
+import 'package:kwik_biz_flutter/widgets/icon_with_background.dart';
 
 import '../rounded_store_logo_widget.dart';
 
@@ -116,10 +117,10 @@ class RatingAndFavorites extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          Icon(
-            SFSymbols.star_fill,
-            color: Colors.yellow[700],
-            size: 18,
+          IconWithBackground(
+            icon: SFSymbols.star_circle_fill,
+            color: Colors.yellow[900],
+            size: 22,
           ),
           SizedBox(width: 4),
           Text(
@@ -131,10 +132,10 @@ class RatingAndFavorites extends StatelessWidget {
             ),
           ),
           SizedBox(width: 10),
-          Icon(
-            SFSymbols.heart_fill,
-            color: Colors.red[700],
-            size: 18,
+          IconWithBackground(
+            icon: SFSymbols.heart_circle_fill,
+            color: Colors.red[900],
+            size: 22,
           ),
           SizedBox(width: 4),
           Text(
