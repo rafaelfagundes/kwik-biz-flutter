@@ -4,12 +4,12 @@ import 'package:kwik_biz_flutter/screens/Home/home_screen.dart';
 import 'package:kwik_biz_flutter/widgets/Drawer/drawer_screen.dart';
 import 'package:kwik_biz_flutter/widgets/custom_secondary_text.dart';
 
-class TabBarScreen extends StatefulWidget {
+class TabbedScreen extends StatefulWidget {
   @override
-  _TabBarScreenState createState() => _TabBarScreenState();
+  _TabbedScreenState createState() => _TabbedScreenState();
 }
 
-class _TabBarScreenState extends State<TabBarScreen> {
+class _TabbedScreenState extends State<TabbedScreen> {
   int _selectedIndex = 0;
   void _onItemTapped(int index) {
     setState(() {

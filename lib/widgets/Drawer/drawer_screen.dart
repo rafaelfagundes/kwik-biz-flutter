@@ -34,8 +34,18 @@ class DrawerWidget extends StatelessWidget {
                 Column(
                   children: <Widget>[
                     DrawerItem(
+                      icon: SFSymbols.house,
+                      label: 'Início',
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/');
+                      },
+                    ),
+                    DrawerItem(
                       icon: SFSymbols.gear,
                       label: 'Ajustes',
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/settings');
+                      },
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -43,6 +53,7 @@ class DrawerWidget extends StatelessWidget {
                         DrawerItem(
                           icon: SFSymbols.moon_circle,
                           label: 'Modo Escuro',
+                          onPressed: null,
                         ),
                         Platform.isIOS
                             ? CupertinoSwitch(
@@ -61,6 +72,7 @@ class DrawerWidget extends StatelessWidget {
                     DrawerItem(
                       icon: SFSymbols.question_circle,
                       label: 'Ajuda',
+                      onPressed: null,
                     ),
                   ],
                 ),
@@ -70,6 +82,7 @@ class DrawerWidget extends StatelessWidget {
                     DrawerItem(
                       icon: SFSymbols.escape,
                       label: 'Sair',
+                      onPressed: null,
                     ),
                     Divider(),
                   ],
@@ -141,25 +154,33 @@ class RatingAndFavorites extends StatelessWidget {
 class DrawerItem extends StatelessWidget {
   final String label;
   final IconData icon;
+  final Function onPressed;
 
   const DrawerItem({
     Key key,
     @required this.label,
     @required this.icon,
+    @required this.onPressed,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(
-        vertical: 16,
-      ),
-      child: Row(
-        children: <Widget>[
-          Icon(icon),
-          SizedBox(width: 10),
-          Text(label),
-        ],
+    return GestureDetector(
+      onTap: () {
+        onPressed();
+      },
+      child: Container(
+        color: Colors.transparent,
+        padding: EdgeInsets.symmetric(
+          vertical: 16,
+        ),
+        child: Row(
+          children: <Widget>[
+            Icon(icon),
+            SizedBox(width: 10),
+            Text(label),
+          ],
+        ),
       ),
     );
   }

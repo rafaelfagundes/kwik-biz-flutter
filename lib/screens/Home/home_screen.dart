@@ -97,6 +97,7 @@ class _HomeScreenState extends State<HomeScreen>
                 buttonText: 'Ver Avaliações',
               ),
             ),
+            CustomSizedBox(heightSize: 4),
           ],
         ),
       ),
