@@ -1,0 +1,30 @@
+name: Test, Build and Release APK
+on:
+  push:
+    branches:
+      - master
+jobs:
+  build:
+    name: Build APK
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get the version
+        id: get_version
+        run: echo ::set-output name=VERSION::v0.0.${GITHUB_RUN_NUMBER}
+      - run: echo ${{ steps.get_version.outputs.VERSION }}
+      - uses: actions/checkout@v1
+      - uses: actions/setup-java@v1
+        with:
+          java-version: "12.x"
+      - uses: subosito/flutter-action@v1
+        with:
+          flutter-version: "1.17.5"
+      - run: flutter pub get
+      # - run: flutter test
+      - run: flutter build apk --split-per-abi
+      - name: Create a Release APK
+        uses: ncipollo/release-action@v1
+        with:
+          tag: ${{ steps.get_version.outputs.VERSION }}
+          artifacts: "build/app/outputs/apk/release/*.apk"
+          token: ${{ secrets.TOKEN }}
