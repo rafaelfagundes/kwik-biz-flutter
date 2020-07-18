@@ -2,96 +2,104 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_sfsymbols/flutter_sfsymbols.dart';
+import 'package:kwik_biz_flutter/modules/app/app_store.dart';
 import 'package:kwik_biz_flutter/utils/image_utils.dart';
 import 'package:kwik_biz_flutter/widgets/icon_with_background.dart';
+import 'package:provider/provider.dart';
 
 import '../rounded_store_logo_widget.dart';
 
 class DrawerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Drawer(
-      child: ListView(
-        // Important: Remove any padding from the ListView.
-        padding: EdgeInsets.zero,
-        children: <Widget>[
-          DrawerHeader(
-            url:
-                'https://res.cloudinary.com/kardappio/image/upload/v1588298907/tyukddlp3acv7fhicrvj.png',
-            name: 'Rafael Fagundes',
-            businessName: 'Boston Burger Co.',
-          ),
-          RatingAndFavorites(rating: 4.3, favorites: 6),
-          SizedBox(height: 16),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            height: MediaQuery.of(context).size.height -
-                (MediaQuery.of(context).padding.top + 64) -
-                234,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Column(
-                  children: <Widget>[
-                    DrawerItem(
-                      icon: SFSymbols.house,
-                      label: 'Início',
-                      onPressed: () {
-                        Navigator.pushNamed(context, '/');
-                      },
-                    ),
-                    DrawerItem(
-                      icon: SFSymbols.gear,
-                      label: 'Ajustes',
-                      onPressed: () {
-                        Navigator.pushNamed(context, '/settings');
-                      },
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        DrawerItem(
-                          icon: SFSymbols.moon_circle,
-                          label: 'Modo Escuro',
-                          onPressed: null,
-                        ),
-                        Platform.isIOS
-                            ? CupertinoSwitch(
-                                value: true,
-                                onChanged: null,
-                                activeColor: Theme.of(context).accentColor,
-                              )
-                            : Switch(
-                                value: true,
-                                onChanged: null,
-                                activeTrackColor: Theme.of(context).accentColor,
-                                activeColor: Theme.of(context).accentColor,
-                              ),
-                      ],
-                    ),
-                    DrawerItem(
-                      icon: SFSymbols.question_circle,
-                      label: 'Ajuda',
-                      onPressed: null,
-                    ),
-                  ],
-                ),
-                Column(
-                  children: <Widget>[
-                    Divider(),
-                    DrawerItem(
-                      icon: SFSymbols.escape,
-                      label: 'Sair',
-                      onPressed: null,
-                    ),
-                    Divider(),
-                  ],
-                ),
-              ],
+    var appStore = Provider.of<AppStore>(context);
+    return Observer(
+      builder: (_) => Drawer(
+        child: ListView(
+          // Important: Remove any padding from the ListView.
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              url:
+                  'https://res.cloudinary.com/kardappio/image/upload/v1588298907/tyukddlp3acv7fhicrvj.png',
+              name: 'Rafael Fagundes',
+              businessName: 'Boston Burger Co.',
             ),
-          ),
-        ],
+            RatingAndFavorites(rating: 4.3, favorites: 6),
+            SizedBox(height: 16),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 16),
+              height: MediaQuery.of(context).size.height -
+                  (MediaQuery.of(context).padding.top + 64) -
+                  234,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Column(
+                    children: <Widget>[
+                      DrawerItem(
+                        icon: SFSymbols.house,
+                        label: 'Início',
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/');
+                        },
+                      ),
+                      DrawerItem(
+                        icon: SFSymbols.gear,
+                        label: 'Ajustes',
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/settings');
+                        },
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          DrawerItem(
+                            icon: SFSymbols.moon_circle,
+                            label: 'Modo Escuro',
+                            onPressed: null,
+                          ),
+                          Platform.isIOS
+                              ? CupertinoSwitch(
+                                  value: appStore.isDark,
+                                  onChanged: (value) =>
+                                      appStore.setIsDark(value),
+                                  activeColor: Theme.of(context).accentColor,
+                                )
+                              : Switch(
+                                  value: true,
+                                  onChanged: null,
+                                  activeTrackColor:
+                                      Theme.of(context).accentColor,
+                                  activeColor: Theme.of(context).accentColor,
+                                ),
+                        ],
+                      ),
+                      DrawerItem(
+                        icon: SFSymbols.question_circle,
+                        label: 'Ajuda',
+                        onPressed: null,
+                      ),
+                    ],
+                  ),
+                  Column(
+                    children: <Widget>[
+                      Divider(),
+                      DrawerItem(
+                        icon: SFSymbols.escape,
+                        label: 'Sair',
+                        onPressed: null,
+                      ),
+                      Divider(),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

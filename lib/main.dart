@@ -1,97 +1,54 @@
-import 'package:flutter/material.dart';
-import 'package:intl/date_symbol_data_local.dart';
-import 'package:intl/intl.dart';
-import 'package:kwik_biz_flutter/screens/Settings/biz_profile_screen.dart';
-import 'package:kwik_biz_flutter/screens/Settings/delivery_fees_screen.dart';
-import 'package:kwik_biz_flutter/screens/Settings/password_change_screen.dart';
-import 'package:kwik_biz_flutter/screens/Settings/payment_types_screen.dart';
-import 'package:kwik_biz_flutter/screens/Settings/settings_screen.dart';
-import 'package:kwik_biz_flutter/screens/Settings/user_profile_screen.dart';
-import 'package:kwik_biz_flutter/screens/Settings/working_hours_screen.dart';
-import 'package:kwik_biz_flutter/screens/TabbedScreen/tabbed_screen.dart';
-import 'package:kwik_biz_flutter/themes/dark_theme.dart';
+import 'dart:async';
 
-void main() {
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
+
+import 'app.dart';
+import 'modules/app/app_store.dart';
+import 'modules/app/local_storage_service.dart';
+import 'modules/auth/auth_store.dart';
+
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  // Set `enableInDevMode` to true to see reports while in debug mode
+  // This is only to be used for confirming that reports are being
+  // submitted as expected. It is not intended to be used for everyday
+  // development.
+  Crashlytics.instance.enableInDevMode = false;
+
+  // Pass all uncaught errors to Crashlytics.
+  FlutterError.onError = Crashlytics.instance.recordFlutterError;
+
+  // Get Firebase ID ### ONLY FOR TESTING ###
+  // final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
+  // var token = await _firebaseMessaging.getToken();
+  // print("######## Instance ID:\n" + token);
 
   // Set Intl package locale
   Intl.defaultLocale = 'pt_BR';
-  initializeDateFormatting('pt_BR', null);
+  // initializeDateFormatting('pt_BR', null);
 
-  runApp(MyApp());
-}
+  var appStore = new AppStore();
+  var localStorageService = new LocalStorageService();
+  await appStore.init(localStorageService);
 
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    var isLogged = false;
-    return GestureDetector(
-      // This allows touching outside text fields and then remove focus
-      onTap: () {
-        FocusScopeNode currentFocus = FocusScope.of(context);
-        currentFocus.unfocus();
+  var authStore = new AuthStore();
+  await authStore.init(localStorageService);
 
-        if (!currentFocus.hasPrimaryFocus &&
-            currentFocus.focusedChild != null) {
-          currentFocus.focusedChild.unfocus();
-        }
-      },
-      child: MaterialApp(
-          debugShowCheckedModeBanner: false,
-          title: 'Kwik Biz',
-          theme: darkTheme,
-          initialRoute: isLogged ? '/' : '/auth',
-          onGenerateRoute: (settings) {
-            switch (settings.name) {
-              case '/':
-                return MaterialPageRoute(
-                  builder: (_) => TabbedScreen(),
-                  settings: settings,
-                );
-              case '/settings':
-                return MaterialPageRoute(
-                  builder: (_) => SettingsScreen(),
-                  settings: settings,
-                );
-              case '/biz-profile':
-                return MaterialPageRoute(
-                  builder: (_) => BizProfileScreen(),
-                  settings: settings,
-                );
-              case '/payment-types':
-                return MaterialPageRoute(
-                  builder: (_) => PaymentTypesScreen(),
-                  settings: settings,
-                );
-              case '/working-hours':
-                return MaterialPageRoute(
-                  builder: (_) => WorkingHoursScreen(),
-                  settings: settings,
-                );
-              case '/delivery-fees':
-                return MaterialPageRoute(
-                  builder: (_) => DeliveryFeesScreen(),
-                  settings: settings,
-                );
-              case '/user-profile':
-                return MaterialPageRoute(
-                  builder: (_) => UserProfileScreen(),
-                  settings: settings,
-                );
-              case '/password-change':
-                return MaterialPageRoute(
-                  builder: (_) => PasswordChangeScreen(),
-                  settings: settings,
-                );
-
-              default:
-                return MaterialPageRoute(
-                  builder: (_) => TabbedScreen(),
-                  settings: settings,
-                );
-            }
-          }),
-    );
-  }
+  runZoned(
+    () {
+      runApp(
+        MultiProvider(
+          providers: [
+            Provider<AppStore>(create: (_) => appStore),
+            Provider<AuthStore>(create: (_) => authStore),
+          ],
+          child: App(),
+        ),
+      );
+    },
+  ); //onError: Crashlytics.instance.recordError);
 }

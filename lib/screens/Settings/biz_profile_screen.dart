@@ -5,7 +5,9 @@ import 'package:kwik_biz_flutter/utils/theme_utils.dart';
 import 'package:kwik_biz_flutter/widgets/DefaultScreen/default_screen.dart';
 import 'package:kwik_biz_flutter/widgets/custom_button_widget.dart';
 import 'package:kwik_biz_flutter/widgets/custom_card.dart';
+import 'package:kwik_biz_flutter/widgets/custom_multiline_text_field.dart';
 import 'package:kwik_biz_flutter/widgets/custom_sized_box.dart';
+import 'package:kwik_biz_flutter/widgets/custom_text_field.dart';
 import 'package:kwik_biz_flutter/widgets/rounded_store_logo_widget.dart';
 
 class BizProfileScreen extends StatelessWidget {
@@ -99,39 +101,24 @@ class BizProfileScreen extends StatelessWidget {
           padding: EdgeInsets.all(16),
           child: Column(
             children: <Widget>[
-              TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: 'Nome da Empresa',
-                ),
+              CustomTextField(
+                labelText: 'Nome da Empresa',
               ),
               CustomSizedBox(
                 heightSize: 2,
               ),
-              TextField(
-                maxLines: 3,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: 'Descrição',
-                ),
+              CustomMultilineTextField(labelText: 'Descrição'),
+              CustomSizedBox(
+                heightSize: 2,
+              ),
+              CustomTextField(
+                labelText: 'Telefone',
               ),
               CustomSizedBox(
                 heightSize: 2,
               ),
-              TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: 'Telefone',
-                ),
-              ),
-              CustomSizedBox(
-                heightSize: 2,
-              ),
-              TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: 'Email',
-                ),
+              CustomTextField(
+                labelText: 'Email',
               ),
               CustomSizedBox(
                 heightSize: 1,
@@ -140,7 +127,7 @@ class BizProfileScreen extends StatelessWidget {
           ),
         ),
       ),
-      CustomSizedBox(heightSize: 2),
+      CustomSizedBox(heightSize: 3),
       CustomButtonWidget(
         buttonType: ButtonType.CONFIRMATION,
         buttonText: 'Salvar',

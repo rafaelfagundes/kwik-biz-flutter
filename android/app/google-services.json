@@ -1,0 +1,97 @@
+{
+  "project_info": {
+    "project_number": "956752992802",
+    "firebase_url": "https://kwik-entregas.firebaseio.com",
+    "project_id": "kwik-entregas",
+    "storage_bucket": "kwik-entregas.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:956752992802:android:987f41e1a96d4af04e487b",
+        "android_client_info": {
+          "package_name": "com.kwikentregas.client"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "956752992802-ru4tijpfr09nrk8o4qqhvru3nolumkqi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kwikentregas.client",
+            "certificate_hash": "1f30b4151ac808bf59259d7c2e812df467a03fb2"
+          }
+        },
+        {
+          "client_id": "956752992802-66lqgt8a8f0g6d3dqo866198jgklcg50.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSEiI6wU4N7s6NCQj5aWurkn_juYk6LSs"
+        },
+        {
+          "current_key": "AIzaSyArWsjHLxjRo3Q4dm6XXhUR-cOVBO1JY2c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "956752992802-66lqgt8a8f0g6d3dqo866198jgklcg50.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "956752992802-v92v1gg6j5v686vu6f9crvoqn8b3edsa.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.kwikentregas.client"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:956752992802:android:f9ecd1f56f8560864e487b",
+        "android_client_info": {
+          "package_name": "com.kwikentregas.kwikentregas"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "956752992802-66lqgt8a8f0g6d3dqo866198jgklcg50.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSEiI6wU4N7s6NCQj5aWurkn_juYk6LSs"
+        },
+        {
+          "current_key": "AIzaSyArWsjHLxjRo3Q4dm6XXhUR-cOVBO1JY2c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "956752992802-66lqgt8a8f0g6d3dqo866198jgklcg50.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "956752992802-v92v1gg6j5v686vu6f9crvoqn8b3edsa.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.kwikentregas.client"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
