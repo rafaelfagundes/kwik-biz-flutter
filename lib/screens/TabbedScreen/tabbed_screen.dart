@@ -68,22 +68,22 @@ class _TabbedScreenState extends State<TabbedScreen> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              SFSymbols.rectangle_stack,
+              SFSymbols.tray_arrow_down,
               color: Theme.of(context).primaryColor.withOpacity(.4),
             ),
             activeIcon: Icon(
-              SFSymbols.rectangle_stack_fill,
+              SFSymbols.tray_arrow_down_fill,
               color: Theme.of(context).primaryColor,
             ),
             title: ItemLabel('Pedidos'),
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              SFSymbols.book,
+              SFSymbols.rectangle_stack,
               color: Theme.of(context).primaryColor.withOpacity(.4),
             ),
             activeIcon: Icon(
-              SFSymbols.book_fill,
+              SFSymbols.rectangle_stack_fill,
               color: Theme.of(context).primaryColor,
             ),
             title: ItemLabel('Produtos'),
@@ -101,11 +101,11 @@ class _TabbedScreenState extends State<TabbedScreen> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              SFSymbols.chart_pie,
+              SFSymbols.chart_bar,
               color: Theme.of(context).primaryColor.withOpacity(.4),
             ),
             activeIcon: Icon(
-              SFSymbols.chart_pie_fill,
+              SFSymbols.chart_bar_fill,
               color: Theme.of(context).primaryColor,
             ),
             title: ItemLabel('Relatórios'),
@@ -115,29 +115,43 @@ class _TabbedScreenState extends State<TabbedScreen> {
         selectedItemColor: Colors.amber[800],
         onTap: _onItemTapped,
       ),
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).cardColor,
-        leading: Builder(builder: (context) {
-          return IconButton(
-            icon: Icon(SFSymbols.text_justifyleft,
-                color: Theme.of(context).primaryColor),
-            onPressed: () {
-              Scaffold.of(context).openDrawer();
-            },
-          );
-        }),
-        title: CustomSecondaryText(
-          _getTitle(_selectedIndex, 'Boston Burger Co.'),
-          weight: FontWeight.normal,
-          size: 18,
+      appBar: PreferredSize(
+        child: Container(
+          decoration: BoxDecoration(
+            boxShadow: [
+              BoxShadow(
+                  blurRadius: 8,
+                  offset: Offset(0, 4),
+                  color: Colors.black.withOpacity(0.05))
+            ],
+          ),
+          child: AppBar(
+            elevation: 0,
+            backgroundColor: Theme.of(context).cardColor,
+            leading: Builder(builder: (context) {
+              return IconButton(
+                icon: Icon(SFSymbols.text_justifyleft,
+                    color: Theme.of(context).primaryColor),
+                onPressed: () {
+                  Scaffold.of(context).openDrawer();
+                },
+              );
+            }),
+            title: CustomSecondaryText(
+              _getTitle(_selectedIndex, 'Boston Burger Co.'),
+              weight: FontWeight.normal,
+              size: 18,
+            ),
+            actions: <Widget>[
+              IconButton(
+                icon: Icon(SFSymbols.bell_fill,
+                    color: Theme.of(context).primaryColor),
+                onPressed: () {},
+              )
+            ],
+          ),
         ),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(SFSymbols.bell_fill,
-                color: Theme.of(context).primaryColor),
-            onPressed: () {},
-          )
-        ],
+        preferredSize: Size.fromHeight(kToolbarHeight),
       ),
     );
   }

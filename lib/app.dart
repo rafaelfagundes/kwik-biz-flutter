@@ -1,5 +1,3 @@
-import 'package:firebase_analytics/firebase_analytics.dart';
-import 'package:firebase_analytics/observer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -24,9 +22,9 @@ class App extends StatelessWidget {
     final appStore = Provider.of<AppStore>(context);
     final authStore = Provider.of<AuthStore>(context);
 
-    FirebaseAnalytics analytics = FirebaseAnalytics();
-    FirebaseAnalyticsObserver observer =
-        FirebaseAnalyticsObserver(analytics: analytics);
+    // FirebaseAnalytics analytics = FirebaseAnalytics();
+    // FirebaseAnalyticsObserver observer =
+    //     FirebaseAnalyticsObserver(analytics: analytics);
     double textScaleFactor = 1.0;
 
     return Observer(builder: (_) {
@@ -60,9 +58,9 @@ class App extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             title: 'Kwik Biz',
             theme: appStore.isDark ? darkTheme : lightTheme,
-            navigatorObservers: [
-              observer,
-            ],
+            // navigatorObservers: [
+            //   observer,
+            // ],
             initialRoute: authStore.isLogged ? '/' : '/auth',
             onGenerateRoute: (settings) {
               switch (settings.name) {

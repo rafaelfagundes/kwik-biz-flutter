@@ -30,7 +30,7 @@ class CustomCard extends StatelessWidget {
         children: <Widget>[
           if (title != null)
             Container(
-              padding: EdgeInsets.only(top: 16, left: 16, bottom: 10),
+              padding: EdgeInsets.only(top: 16, left: 16),
               child: CustomText(
                 title.toUpperCase(),
                 size: 12,

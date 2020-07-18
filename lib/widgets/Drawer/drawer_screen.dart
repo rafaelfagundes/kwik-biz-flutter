@@ -4,7 +4,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_sfsymbols/flutter_sfsymbols.dart';
+import 'package:kwik_biz_flutter/modules/app/app_controller.dart';
 import 'package:kwik_biz_flutter/modules/app/app_store.dart';
+import 'package:kwik_biz_flutter/modules/app/local_storage_service.dart';
 import 'package:kwik_biz_flutter/utils/image_utils.dart';
 import 'package:kwik_biz_flutter/widgets/icon_with_background.dart';
 import 'package:provider/provider.dart';
@@ -14,7 +16,9 @@ import '../rounded_store_logo_widget.dart';
 class DrawerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var appStore = Provider.of<AppStore>(context);
+    var _appStore = Provider.of<AppStore>(context);
+    final AppController _appController =
+        new AppController(LocalStorageService());
     return Observer(
       builder: (_) => Drawer(
         child: ListView(
@@ -63,14 +67,19 @@ class DrawerWidget extends StatelessWidget {
                           ),
                           Platform.isIOS
                               ? CupertinoSwitch(
-                                  value: appStore.isDark,
-                                  onChanged: (value) =>
-                                      appStore.setIsDark(value),
+                                  value: _appStore.isDark,
+                                  onChanged: (value) {
+                                    _appStore.setIsDark(value);
+                                    _appController.setTheme(value);
+                                  },
                                   activeColor: Theme.of(context).accentColor,
                                 )
                               : Switch(
-                                  value: true,
-                                  onChanged: null,
+                                  value: _appStore.isDark,
+                                  onChanged: (value) {
+                                    _appStore.setIsDark(value);
+                                    _appController.setTheme(value);
+                                  },
                                   activeTrackColor:
                                       Theme.of(context).accentColor,
                                   activeColor: Theme.of(context).accentColor,
