@@ -28,8 +28,6 @@ class _DeliveryFeesScreenState extends State<DeliveryFeesScreen> {
 
   @override
   Widget build(BuildContext context) {
-    bool isDark = ThemeUtils.isDark(context);
-
     return DefaultScreen('Taxas', children: [
       CustomSizedBox(heightSize: 1),
       CustomCard(
