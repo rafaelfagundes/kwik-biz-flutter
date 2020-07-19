@@ -32,7 +32,7 @@ class SettingsScreen extends StatelessWidget {
         SettingsItem(
           screen: '/payment-types',
           icon: SFSymbols.creditcard,
-          title: 'Formas de Pagamento',
+          title: 'Pagamento',
           subtitle: 'Pedído mínimo e formas de pagamento',
         ),
         Divider(
