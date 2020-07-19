@@ -14,7 +14,7 @@ class PasswordChangeScreen extends StatelessWidget {
     var isDark = ThemeUtils.isDark(context);
 
     return DefaultScreen('Senha', children: [
-      CustomSizedBox(heightSize: 2),
+      CustomSizedBox(heightSize: 1),
       CustomCard(
         child: Padding(
           padding: const EdgeInsets.all(16),

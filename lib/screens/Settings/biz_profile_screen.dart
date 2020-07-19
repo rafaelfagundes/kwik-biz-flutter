@@ -129,7 +129,7 @@ class BizProfileScreen extends StatelessWidget {
       ),
       CustomSizedBox(heightSize: 3),
       CustomButtonWidget(
-        buttonType: ButtonType.CONFIRMATION,
+        buttonType: ButtonType.CALL_TO_ACTION_ALTERNATIVE,
         buttonText: 'Salvar',
         onPressed: null,
       ),
