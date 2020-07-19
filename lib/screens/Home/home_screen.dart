@@ -198,31 +198,36 @@ class BusinessStatus extends StatelessWidget {
             parent: _controller,
           ),
           child: Container(
-            height: 181,
+            height: 200,
             padding: EdgeInsets.symmetric(horizontal: 8),
             child: CustomCard(
-              child: Column(
-                children: <Widget>[
-                  SizedBox(height: 16),
-                  LabelAndSwitchWidget(
-                    value: true,
-                    onChanged: null,
-                    label: 'Entregando',
-                  ),
-                  SizedBox(height: 10),
-                  LabelAndSwitchWidget(
-                    value: true,
-                    onChanged: null,
-                    label: 'Aceitando Retirada',
-                  ),
-                  Container(
-                    padding: EdgeInsets.all(16),
-                    child: CustomButtonWidget(
-                      buttonText: 'Fechar Estabelecimento',
-                      buttonType: ButtonType.CANCEL,
+              borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(8),
+                  bottomRight: Radius.circular(8)),
+              child: Container(
+                child: Column(
+                  children: <Widget>[
+                    SizedBox(height: 16),
+                    LabelAndSwitchWidget(
+                      value: true,
+                      onChanged: null,
+                      label: 'Entregando',
                     ),
-                  )
-                ],
+                    SizedBox(height: 10),
+                    LabelAndSwitchWidget(
+                      value: true,
+                      onChanged: null,
+                      label: 'Aceitando Retirada',
+                    ),
+                    Container(
+                      padding: EdgeInsets.all(16),
+                      child: CustomButtonWidget(
+                        buttonText: 'Fechar Estabelecimento',
+                        buttonType: ButtonType.CANCEL,
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
           ),

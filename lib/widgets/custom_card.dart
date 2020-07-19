@@ -4,18 +4,23 @@ import 'package:kwik_biz_flutter/widgets/custom_text.dart';
 class CustomCard extends StatelessWidget {
   final Widget child;
   final String title;
+  final BorderRadius borderRadius;
 
-  const CustomCard({Key key, @required this.child, this.title})
+  const CustomCard(
+      {Key key, @required this.child, this.title, this.borderRadius})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: double.infinity,
       decoration: BoxDecoration(
         color: Theme.of(context).cardColor,
-        borderRadius: BorderRadius.all(
-          Radius.circular(8),
-        ),
+        borderRadius: borderRadius == null
+            ? BorderRadius.all(
+                Radius.circular(8),
+              )
+            : borderRadius,
         boxShadow: [
           BoxShadow(
             blurRadius: 8,

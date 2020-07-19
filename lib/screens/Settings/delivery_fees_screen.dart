@@ -180,40 +180,43 @@ class _DeliveryFeesScreenState extends State<DeliveryFeesScreen> {
                           content: Material(
                             color: Colors.transparent,
                             child: Container(
+                                height: 211,
                                 child: Column(
-                              children: <Widget>[
-                                CustomSizedBox(heightSize: 2),
-                                CustomTextField(labelText: 'Local'),
-                                CustomSizedBox(heightSize: 2),
-                                CustomTextField(labelText: 'Valor (R\$)'),
-                                CustomSizedBox(heightSize: 2),
-                                Row(
                                   children: <Widget>[
-                                    Expanded(
-                                      child: CustomButtonWidget(
-                                        buttonText: 'Cancelar',
-                                        buttonFillType: ButtonFillType.EMPTY,
-                                        buttonType: ButtonType.CANCEL,
-                                        onPressed: () {
-                                          Navigator.of(context).pop();
-                                        },
-                                      ),
-                                    ),
-                                    CustomSizedBox(widthSize: 2),
-                                    Expanded(
-                                      child: CustomButtonWidget(
-                                        buttonText: 'Adicionar',
-                                        buttonFillType: ButtonFillType.FILLED,
-                                        buttonType: ButtonType.CONFIRMATION,
-                                        onPressed: () {
-                                          Navigator.of(context).pop();
-                                        },
-                                      ),
-                                    ),
+                                    CustomSizedBox(heightSize: 2),
+                                    CustomTextField(labelText: 'Local'),
+                                    CustomSizedBox(heightSize: 2),
+                                    CustomTextField(labelText: 'Valor (R\$)'),
+                                    CustomSizedBox(heightSize: 2),
+                                    Row(
+                                      children: <Widget>[
+                                        Expanded(
+                                          child: CustomButtonWidget(
+                                            buttonText: 'Cancelar',
+                                            buttonFillType:
+                                                ButtonFillType.EMPTY,
+                                            buttonType: ButtonType.CANCEL,
+                                            onPressed: () {
+                                              Navigator.of(context).pop();
+                                            },
+                                          ),
+                                        ),
+                                        CustomSizedBox(widthSize: 2),
+                                        Expanded(
+                                          child: CustomButtonWidget(
+                                            buttonText: 'Adicionar',
+                                            buttonFillType:
+                                                ButtonFillType.FILLED,
+                                            buttonType: ButtonType.CONFIRMATION,
+                                            onPressed: () {
+                                              Navigator.of(context).pop();
+                                            },
+                                          ),
+                                        ),
+                                      ],
+                                    )
                                   ],
-                                )
-                              ],
-                            )),
+                                )),
                           ),
                           hasOkButton: false,
                         );
