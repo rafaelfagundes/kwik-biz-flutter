@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_sfsymbols/flutter_sfsymbols.dart';
 import 'package:kwik_biz_flutter/screens/Home/home_screen.dart';
+import 'package:kwik_biz_flutter/screens/Orders/orders_screen.dart';
 import 'package:kwik_biz_flutter/widgets/Drawer/drawer_screen.dart';
 import 'package:kwik_biz_flutter/widgets/custom_secondary_text.dart';
 
@@ -21,6 +22,8 @@ class _TabbedScreenState extends State<TabbedScreen> {
     switch (index) {
       case 0:
         return HomeScreen();
+      case 1:
+        return OrdersScreen();
       default:
         return HomeScreen();
     }
@@ -90,11 +93,11 @@ class _TabbedScreenState extends State<TabbedScreen> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              SFSymbols.bubble_left_bubble_right,
+              SFSymbols.text_bubble,
               color: Theme.of(context).primaryColor.withOpacity(.4),
             ),
             activeIcon: Icon(
-              SFSymbols.bubble_left_bubble_right_fill,
+              SFSymbols.text_bubble_fill,
               color: Theme.of(context).primaryColor,
             ),
             title: ItemLabel('Chat'),

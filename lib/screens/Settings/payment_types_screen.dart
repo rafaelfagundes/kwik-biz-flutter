@@ -97,7 +97,7 @@ class _PaymentTypesScreenState extends State<PaymentTypesScreen> {
     ),
     CreditCardItem(
       isEnabled: false,
-      id: '2b41e114-399b-474b-b7bd-da32c7676fd8',
+      id: '2b41e114-399b-424b-b7bd-da32c7676fd8',
       title: 'Elo',
       url:
           'https://res.cloudinary.com/kardappio/image/upload/v1588216194/kwik/assets/img/credit_cards/elo.png',
@@ -321,15 +321,21 @@ class _PaymentTypesScreenState extends State<PaymentTypesScreen> {
                 child: Column(
               children: <Widget>[
                 ...cards.mapIndexed(
-                  (e, index) => CardItem(
-                    index: index,
-                    key: ValueKey(e.id),
-                    isActive: e.isEnabled,
-                    onPressed: (value, index) {
-                      setCardStatus(index, value);
-                    },
-                    cardName: e.title,
-                    url: e.url,
+                  (e, index) => Column(
+                    children: <Widget>[
+                      CardItem(
+                        index: index,
+                        key: ValueKey(e.id),
+                        isActive: e.isEnabled,
+                        onPressed: (value, index) {
+                          setCardStatus(index, value);
+                        },
+                        cardName: e.title,
+                        url: e.url,
+                        isFirstOne: index == 0,
+                        isLastOne: index == cards.length - 1,
+                      ),
+                    ],
                   ),
                 )
               ],
@@ -351,6 +357,8 @@ class CardItem extends StatelessWidget {
   final Function onPressed;
   final String cardName;
   final String url;
+  final bool isLastOne;
+  final bool isFirstOne;
 
   const CardItem({
     Key key,
@@ -359,6 +367,8 @@ class CardItem extends StatelessWidget {
     @required this.onPressed,
     @required this.cardName,
     @required this.url,
+    @required this.isFirstOne,
+    @required this.isLastOne,
   }) : super(key: key);
 
   @override
@@ -370,8 +380,8 @@ class CardItem extends StatelessWidget {
         onPressed(!isActive, index);
       },
       child: Container(
-        margin: EdgeInsets.only(bottom: 16),
-        padding: EdgeInsets.only(left: 0, top: 10, bottom: 10, right: 16),
+        margin: EdgeInsets.only(bottom: isLastOne ? 0 : 8),
+        padding: EdgeInsets.only(left: 0, top: 4, bottom: 4, right: 6),
         decoration: BoxDecoration(
           color: isDark ? Color(0xff161616) : Colors.white,
           borderRadius: BorderRadius.all(Radius.circular(8)),
@@ -400,16 +410,22 @@ class CardItem extends StatelessWidget {
               ),
             ),
             Container(
-              width: 32,
-              height: 32,
+              width: 42,
+              height: 42,
               decoration: BoxDecoration(
+                boxShadow: [
+                  BoxShadow(
+                      blurRadius: 8,
+                      offset: Offset(0, 4),
+                      color: Colors.black.withOpacity(0.05))
+                ],
                 image: DecorationImage(
                   fit: BoxFit.cover,
                   image: NetworkImage(ImageUtils.resizeCloudinaryImageFromUrl(
-                      url, 32, context)),
+                      url, 42, context)),
                 ),
                 borderRadius: BorderRadius.all(
-                  Radius.circular(32 / 8),
+                  Radius.circular(8),
                 ),
               ),
             ),
