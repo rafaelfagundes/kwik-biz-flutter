@@ -133,6 +133,7 @@ class _TabbedScreenState extends State<TabbedScreen> {
             backgroundColor: Theme.of(context).cardColor,
             leading: Builder(builder: (context) {
               return IconButton(
+                key: ValueKey('menuDrawerIcon'),
                 icon: Icon(SFSymbols.text_justifyleft,
                     color: Theme.of(context).primaryColor),
                 onPressed: () {

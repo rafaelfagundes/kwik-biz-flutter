@@ -67,6 +67,7 @@ class DrawerWidget extends StatelessWidget {
                           ),
                           Platform.isIOS
                               ? CupertinoSwitch(
+                                  key: ValueKey('themeSwitcher'),
                                   value: _appStore.isDark,
                                   onChanged: (value) {
                                     _appStore.setIsDark(value);
@@ -75,6 +76,7 @@ class DrawerWidget extends StatelessWidget {
                                   activeColor: Theme.of(context).accentColor,
                                 )
                               : Switch(
+                                  key: ValueKey('themeSwitcher'),
                                   value: _appStore.isDark,
                                   onChanged: (value) {
                                     _appStore.setIsDark(value);

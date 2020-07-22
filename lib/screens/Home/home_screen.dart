@@ -163,6 +163,7 @@ class BusinessStatus extends StatelessWidget {
                         ],
                       ),
                       GestureDetector(
+                        key: ValueKey('statusDrawerWidget'),
                         child: Container(
                             width: 42,
                             height: 42,
