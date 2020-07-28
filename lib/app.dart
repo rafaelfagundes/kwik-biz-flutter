@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:kwik_biz_flutter/screens/Settings/biz_profile_screen.dart';
-import 'package:kwik_biz_flutter/screens/Settings/delivery_fees_screen.dart';
-import 'package:kwik_biz_flutter/screens/Settings/password_change_screen.dart';
-import 'package:kwik_biz_flutter/screens/Settings/payment_types_screen.dart';
-import 'package:kwik_biz_flutter/screens/Settings/settings_screen.dart';
-import 'package:kwik_biz_flutter/screens/Settings/user_profile_screen.dart';
-import 'package:kwik_biz_flutter/screens/Settings/working_hours_screen.dart';
-import 'package:kwik_biz_flutter/screens/TabbedScreen/tabbed_screen.dart';
 import 'package:kwik_biz_flutter/themes/dark_theme.dart';
 import 'package:kwik_biz_flutter/themes/light_theme.dart';
 import 'package:provider/provider.dart';
 
 import 'modules/app/app_store.dart';
 import 'modules/auth/auth_store.dart';
+import 'screens/OrderDetails/order_details_screen.dart';
+import 'screens/Settings/biz_profile_screen.dart';
+import 'screens/Settings/delivery_fees_screen.dart';
+import 'screens/Settings/password_change_screen.dart';
+import 'screens/Settings/payment_types_screen.dart';
+import 'screens/Settings/settings_screen.dart';
+import 'screens/Settings/user_profile_screen.dart';
+import 'screens/Settings/working_hours_screen.dart';
+import 'screens/TabbedScreen/tabbed_screen.dart';
 
 class App extends StatelessWidget {
   @override
@@ -102,6 +103,11 @@ class App extends StatelessWidget {
                 case '/password-change':
                   return MaterialPageRoute(
                     builder: (_) => PasswordChangeScreen(),
+                    settings: settings,
+                  );
+                case '/order-details':
+                  return MaterialPageRoute(
+                    builder: (_) => OrderDetailsScreen(),
                     settings: settings,
                   );
 

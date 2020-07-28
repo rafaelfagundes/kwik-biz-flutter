@@ -16,7 +16,7 @@ class User {
   Gender gender;
   List<Address> adresses;
   Store store;
-  Image image;
+  String image;
   City selectedCity;
 
   User({
@@ -78,7 +78,7 @@ class User {
       });
     }
     store = json['store'] != null ? new Store.fromJson(json['store']) : null;
-    image = json['image'] != null ? new Image.fromJson(json['image']) : null;
+    image = json['image'] != null ? new Image.fromJson(json['image']) : "";
     selectedCity = json['selectedCity'] != null
         ? new City.fromJson(json['selectedCity'])
         : null;
@@ -102,7 +102,7 @@ class User {
       data['store'] = this.store.toJson();
     }
     if (this.image != null) {
-      data['image'] = this.image.toJson();
+      data['image'] = this.image;
     }
     if (this.selectedCity != null) {
       data['selectedCity'] = this.selectedCity.toJson();

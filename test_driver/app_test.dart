@@ -13,6 +13,7 @@ void main() {
     setUpAll(() async {
       driver = await FlutterDriver.connect();
       date = DateFormat('yyyy-MM-dd hh:mm:ss').format(DateTime.now());
+      new Directory('screenshots').create();
       new Directory('screenshots/$date').create();
     });
 

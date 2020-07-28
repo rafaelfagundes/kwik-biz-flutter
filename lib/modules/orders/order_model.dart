@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:kwik_biz_flutter/modules/cart_item/cart_item_model.dart';
 import 'package:kwik_biz_flutter/modules/user/user_model.dart';
 import 'package:kwik_biz_flutter/shared/enums.dart';
 
@@ -11,7 +12,7 @@ class Order {
   OrderStatusType status;
   PaymentType paymentType;
   DeliveryType deliveryType;
-  List<Map<String, dynamic>> items;
+  List<CartItem> items;
   String orderShortDescription;
   double deliveryFee;
   double itemsValue;
@@ -39,7 +40,7 @@ class Order {
     @required this.deliveryFee,
     @required this.itemsValue,
     @required this.finalPrice,
-    this.discountAmount,
+    this.discountAmount = 0,
     this.coupon,
     this.postScriptum,
     this.confirmationDate,
@@ -60,7 +61,7 @@ class Order {
     paymentType = json['paymentType'];
     deliveryType = json['deliveryType'];
     if (json['items'] != null) {
-      items = new List<Map<String, dynamic>>();
+      items = new List<CartItem>();
       json['items'].forEach((v) {
         items.add(v);
       });
