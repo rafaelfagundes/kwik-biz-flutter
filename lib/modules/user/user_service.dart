@@ -48,6 +48,7 @@ class UserService implements IUser {
     }
   }
 
+  @override
   Future<UserResponseDto> createUserWithEmailAndPassword(
       AuthUserDto user) async {
     String url = '${Api.baseUrl}/users/user-and-password';

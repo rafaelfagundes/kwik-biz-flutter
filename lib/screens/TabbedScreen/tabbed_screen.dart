@@ -150,7 +150,9 @@ class _TabbedScreenState extends State<TabbedScreen> {
               IconButton(
                 icon: Icon(SFSymbols.bell_fill,
                     color: Theme.of(context).primaryColor),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, '/notifications');
+                },
               )
             ],
           ),

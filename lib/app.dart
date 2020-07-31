@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:kwik_biz_flutter/screens/Notifications/notifications_screen.dart';
 import 'package:kwik_biz_flutter/themes/dark_theme.dart';
 import 'package:kwik_biz_flutter/themes/light_theme.dart';
 import 'package:provider/provider.dart';
@@ -108,6 +109,11 @@ class App extends StatelessWidget {
                 case '/order-details':
                   return MaterialPageRoute(
                     builder: (_) => OrderDetailsScreen(),
+                    settings: settings,
+                  );
+                case '/notifications':
+                  return MaterialPageRoute(
+                    builder: (_) => NotificationsScreen(),
                     settings: settings,
                   );
 
